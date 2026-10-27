@@ -68,7 +68,6 @@ public class LabyrinthCrawlerTest
         
         Assert.That(test.Direction, Is.EqualTo(Direction.North));
         Assert.That(test.FacingTile, Is.TypeOf<Outside>());
-
     }
 
     [Test]
