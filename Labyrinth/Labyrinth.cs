@@ -72,7 +72,7 @@ namespace Labyrinth
                     startPositionX,
                     startPositionY,
                     Direction.North,
-                    _tiles[startPositionY, startPositionX]
+                    _tiles[startPositionX, startPositionY-1]
                 );
             
             return crawler;
