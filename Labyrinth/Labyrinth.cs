@@ -68,7 +68,7 @@ namespace Labyrinth
             int startPositionX = _startPosition.Item1;
             int startPositionY = _startPosition.Item2;
 
-            Tile facingTile = startPositionY <= 0 ? Outside.Singleton : _tiles[startPositionX, startPositionY-1];
+            Tile facingTile = (startPositionY <= 0 || startPositionX <= 0) ? Outside.Singleton : _tiles[startPositionX, startPositionY-1];
             
             var crawler = new LabyrinthCrawler(
                     startPositionX,
