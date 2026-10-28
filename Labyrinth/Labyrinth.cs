@@ -15,7 +15,9 @@ namespace Labyrinth
         /// <exception cref="NotSupportedException">Thrown for multiple doors (resp. key locations) before key locations (resp. doors).</exception>
         public Labyrinth(IBuilder builder)
         {
-            _tiles = builder.Build(out _startPosition);
+            _startPosition = IBuilder.InvalidPosition;
+            builder.StartPositionFound += (_, args) => _startPosition = (args.X, args.Y);
+            _tiles = builder.Build();
             Width = _tiles.GetLength(0);
             Height = _tiles.GetLength(1);
             if (Width < 3 || Height < 3)
