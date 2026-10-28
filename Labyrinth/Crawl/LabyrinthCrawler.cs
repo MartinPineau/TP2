@@ -13,6 +13,7 @@ public class LabyrinthCrawler(int x, int y, Direction direction, Func<int, int, 
 
     public Inventory Walk()
     {
+        if(!FacingTile.IsTraversable) throw new InvalidOperationException("Cannot walk on non-traversable tile");
         X += Direction.DeltaX;
         Y += Direction.DeltaY;
         return new MyInventory();
