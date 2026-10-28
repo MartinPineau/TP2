@@ -187,6 +187,8 @@ public class LabyrinthCrawlerTest
         var test = laby.NewCrawler();
         
         Assert.Throws<InvalidOperationException>(() => test.Walk());
+        Assert.That(test.X, Is.EqualTo(1));
+        Assert.That(test.Y, Is.EqualTo(1));
     }
     #endregion
 
