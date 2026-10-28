@@ -150,7 +150,7 @@ public class LabyrinthCrawlerTest
         test.Direction.TurnRight();
         var inventory = test.Walk();
         using var all = Assert.EnterMultipleScope();
-        Assert.That(inventory, Is.TypeOf<Inventory>());
+        Assert.That(inventory, Is.InstanceOf<Inventory>());
         Assert.That(test.X, Is.EqualTo(2));
         Assert.That(test.Y, Is.EqualTo(1));
         Assert.That(test.Direction, Is.EqualTo(Direction.East));
