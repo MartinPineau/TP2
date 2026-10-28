@@ -16,7 +16,9 @@ namespace Labyrinth
         public Labyrinth(IBuilder builder)
         {
             _tiles = builder.Build(out _startPosition);
-            if (_tiles.GetLength(0) < 3 || _tiles.GetLength(1) < 3)
+            Width = _tiles.GetLength(0);
+            Height = _tiles.GetLength(1);
+            if (Width < 3 || Height < 3)
             {
                 throw new ArgumentException("Labyrinth must be at least 3x3");
             }
