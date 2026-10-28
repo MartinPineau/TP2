@@ -199,7 +199,7 @@ public class LabyrinthCrawlerTest
         var laby = new Labyrinth.Labyrinth(new AsciiParser("""
            +--+
            |k |
-           |x |
+           |x/|
            +--+
            """));
         var test = laby.NewCrawler();

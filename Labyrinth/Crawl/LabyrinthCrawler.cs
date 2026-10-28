@@ -10,12 +10,15 @@ public class LabyrinthCrawler(int x, int y, Direction direction, Func<int, int, 
     public int Y { get; set; } = y;
     public Direction Direction { get; } = direction;
     public Tile FacingTile => tileAt(X + Direction.DeltaX, Y + Direction.DeltaY);
-
+    
+    
     public Inventory Walk()
     {
         if(!FacingTile.IsTraversable) throw new InvalidOperationException("Cannot walk on non-traversable tile");
+
+        var inventory = FacingTile.Pass();
         X += Direction.DeltaX;
         Y += Direction.DeltaY;
-        return new MyInventory();
+        return inventory;
     }
 }
