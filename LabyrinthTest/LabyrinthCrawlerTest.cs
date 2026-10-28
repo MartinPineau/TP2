@@ -196,7 +196,19 @@ public class LabyrinthCrawlerTest
     [Test]
     public void WalkInARoomWithAnItem()
     {
-        Assert.That(false);
+        var laby = new Labyrinth.Labyrinth(new AsciiParser("""
+           +--+
+           |k |
+           |x |
+           +--+
+           """));
+        var test = laby.NewCrawler();
+        var inventory = test.Walk();
+        using var all = Assert.EnterMultipleScope();
+        Assert.That(test.X, Is.EqualTo(1));
+        Assert.That(test.Y, Is.EqualTo(1));
+        Assert.That(inventory.HasItem);
+        Assert.That(inventory.ItemType, Is.EqualTo(typeof(Key)));
     }
 
     [Test]
