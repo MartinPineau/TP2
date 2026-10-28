@@ -143,9 +143,28 @@ public class LabyrinthCrawlerTest
     {
         var laby = new Labyrinth.Labyrinth(new AsciiParser("""
            +--+
+           |  |
            |x |
            +--+
            """));
+        var test = laby.NewCrawler();
+        var inventory = test.Walk();
+        using var all = Assert.EnterMultipleScope();
+        Assert.That(inventory, Is.InstanceOf<Inventory>());
+        Assert.That(test.X, Is.EqualTo(1));
+        Assert.That(test.Y, Is.EqualTo(1));
+        Assert.That(test.Direction, Is.EqualTo(Direction.North));
+        Assert.That(test.FacingTile, Is.TypeOf<Wall>());
+    }
+
+    [Test]
+    public void TurnAndWalkReturnsInventoryChangesPositionAndFacingTile()
+    {
+        var laby = new Labyrinth.Labyrinth(new AsciiParser("""
+                                                           +--+
+                                                           |x |
+                                                           +--+
+                                                           """));
         var test = laby.NewCrawler();
         test.Direction.TurnRight();
         var inventory = test.Walk();
@@ -155,12 +174,6 @@ public class LabyrinthCrawlerTest
         Assert.That(test.Y, Is.EqualTo(1));
         Assert.That(test.Direction, Is.EqualTo(Direction.East));
         Assert.That(test.FacingTile, Is.TypeOf<Wall>());
-    }
-
-    [Test]
-    public void TurnAndWalkReturnsInventoryChangesPositionAndFacingTile()
-    {
-        Assert.That(false);
     }
 
     [Test]
