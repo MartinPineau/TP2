@@ -75,8 +75,9 @@ namespace Labyrinth
                 );
         }
 
-        private Tile TileAt(int x, int y) =>
-            (x < 0 || y < 0 || x >= Width || y >= Height) ? Outside.Singleton : _tiles[x, y];
+        private bool IsInside(int x, int y) => x >= 0 && x < Width && y >= 0 && y < Height;
+
+        private Tile TileAt(int x, int y) => IsInside(x, y) ? _tiles[x, y] : Outside.Singleton;
 
         private readonly Tile[,] _tiles;
         private (int, int) _startPosition;
